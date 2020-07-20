@@ -29,7 +29,7 @@ void Triangle::Calc()
 	A1 = A.y - C.y;
 	B1 = C.x - A.x;
 	C1 = A.x * C.y - C.x * A.y;
-	//Ö±ÏßÏòÁ¿
+	//ç›´çº¿å‘é‡
 	V_L1_X = A.x - C.x;
 	 V_L1_Y = A.y - C.y;
 
@@ -39,7 +39,7 @@ void Triangle::Calc()
 	A2 = B.y - A.y;
 	B2 = A.x - B.x;
 	C2 = B.x * A.y - A.x * B.y;
-	//Ö±ÏßÏòÁ¿
+	//ç›´çº¿å‘é‡
 	V_L2_X = B.x - A.x;
 	 V_L2_Y = B.y - A.y;
 
@@ -48,7 +48,7 @@ void Triangle::Calc()
 	A3 = C.y - B.y;
 	B3 = B.x - C.x;
 	C3 = C.x * B.y - B.x * C.y;
-	//Ö±ÏßÏòÁ¿
+	//ç›´çº¿å‘é‡
 	V_L3_X = C.x - B.x;
 	V_L3_Y = C.y - B.y;
 
@@ -56,49 +56,49 @@ void Triangle::Calc()
 
 
 
-	//¶Ô±ß³¤¶È
+	//å¯¹è¾¹é•¿åº¦
 	a = Norm_p((C - B).x, (C - B).y);
 	b = Norm_p((A - C).x, (A - C).y);
 	c = Norm_p((B - A).x, (B - A).y);
 
-	//Èı½ÇĞÎÃæ»ı
+	//ä¸‰è§’å½¢é¢ç§¯
 	S = Cross_p12((B - A).x, (B - A).y, (C - A).x, (C - A).y) / 2;
 
-	//ÄÚĞÄ
+	//å†…å¿ƒ
 	PL.x = (a * A.x + b * B.x + c * C.x) / (a + b + c);
 	PL.y = (a * A.y + b * B.y + c * C.y) / (a + b + c);
 
-	//ÄÚ½ÓÔ²°ë¾¶
+	//å†…æ¥åœ†åŠå¾„
 	 r = PointToLineDistance(PL.x, PL.y, A1, B1, C1);
 
-	//ÅÔÇĞÔ²°ë¾¶
+	//æ—åˆ‡åœ†åŠå¾„
 	 rA = (2 * S) / (b + c - a);
 	 rB = (2 * S) / (a + c - b);
 	 rC = (2 * S) / (a + b - c);
 
 	float p = (a + b + c) / 2;
 
-	//¼ÆËãA-B´¹Ö±µ¥Î»ÏòÁ¿
+	//è®¡ç®—A-Bå‚ç›´å•ä½å‘é‡
 	float v_ab_e_x = 0;
 	float v_ab_e_y = 0;
 	Verte((B - A).x, (B - A).y, v_ab_e_x, v_ab_e_y, 1);
-	//Aµã¶ÔÓ¦ÅÔĞÄ
+	//Aç‚¹å¯¹åº”æ—å¿ƒ
 	PW3_A.x = ((B - A).x / c) * p + A.x + rA * v_ab_e_x;
 	PW3_A.y = ((B - A).y / c) * p + A.y + rA * v_ab_e_y;
 
-	//¼ÆËãB-C´¹Ö±µ¥Î»ÏòÁ¿
+	//è®¡ç®—B-Cå‚ç›´å•ä½å‘é‡
 	float v_bc_e_x = 0;
 	float v_bc_e_y = 0;
 	Verte((C - B).x, (C - B).y, v_bc_e_x, v_bc_e_y, 1);
-	//Bµã¶ÔÓ¦ÅÔĞÄ
+	//Bç‚¹å¯¹åº”æ—å¿ƒ
 	PW3_B.x = ((C - B).x / a) * p + B.x + rB * v_bc_e_x;
 	PW3_B.y = ((C - B).y / a) * p + B.y + rB * v_bc_e_y;
 
-	//¼ÆËãC-A´¹Ö±µ¥Î»ÏòÁ¿
+	//è®¡ç®—C-Aå‚ç›´å•ä½å‘é‡
 	float v_ca_e_x = 0;
 	float v_ca_e_y = 0;
 	Verte((A - C).x, (A - C).y, v_ca_e_x, v_ca_e_y, 1);
-	//Cµã¶ÔÓ¦ÅÔĞÄ
+	//Cç‚¹å¯¹åº”æ—å¿ƒ
 	PW3_C.x = ((A - C).x / b) * p + C.x + rC * v_ca_e_x;
 	PW3_C.y = ((A - C).y / b) * p + C.y + rC * v_ca_e_y;
 
@@ -109,7 +109,7 @@ void Triangle::Calc()
 	return;
 }
 
-int  Triangle::WhatTriangle()//Èı½ÇĞÎÀàĞÍ
+int  Triangle::WhatTriangle()//ä¸‰è§’å½¢ç±»å‹
 {
 	int Flag = 0;
 
@@ -118,7 +118,7 @@ int  Triangle::WhatTriangle()//Èı½ÇĞÎÀàĞÍ
 		return Flag;
 	}
 
-	//Ã»¿Õ
+	//æ²¡ç©º
 
 
 
@@ -133,7 +133,7 @@ float Triangle::ZhouChang()
 		return 0;
 	}
 
-	//¶Ô±ß³¤¶È
+	//å¯¹è¾¹é•¿åº¦
 	a = Norm_p((C - B).x, (C - B).y);
 	b = Norm_p((A - C).x, (A - C).y);
 	c = Norm_p((B - A).x, (B - A).y);
@@ -184,19 +184,19 @@ esPoint2f Triangle::ChuiXin()
 		Calc();
 	}
 
-	//BµãÔÚCAÏß´¹Öá
+	//Bç‚¹åœ¨CAçº¿å‚è½´
 	float B_CA_x = 0;
 	float B_CA_y = 0;
 	float ans33 = 0;
 	Point2Line(B.x, B.y, A.x, A.y, C.x, C.y, B_CA_x, B_CA_y, ans33);
 
-	//CµãÔÚABÏß´¹Öá
+	//Cç‚¹åœ¨ABçº¿å‚è½´
 	float C_BA_x = 0;
 	float C_BA_y = 0;
 	float ans34 = 0;
 	Point2Line(C.x, C.y, A.x, A.y, B.x, B.y, C_BA_x, C_BA_y, ans34);
 
-	//Á½Ìõ´¹Ïß½»µã
+	//ä¸¤æ¡å‚çº¿äº¤ç‚¹
 	float aa1 = 0;
 	float bb1 = 0;
 	float cc1 = 0;
@@ -281,7 +281,7 @@ vector<float> Triangle::BianChang()
 		return BIANC;
 	}
 
-	//¶Ô±ß³¤¶È
+	//å¯¹è¾¹é•¿åº¦
 	a = Norm_p((C - B).x, (C - B).y);
 	b = Norm_p((A - C).x, (A - C).y);
 	c = Norm_p((B - A).x, (B - A).y);

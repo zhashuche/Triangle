@@ -11,31 +11,31 @@ using namespace std;
 
 
 
-//·ÖÖ§1
+//åˆ†æ”¯1
 
 /*
-Èı½ÇĞÎ·ÖÀà:
-	°´½Ç·Ö
-				Ö±½Ç
-				¶Û½Ç
-				Èñ½Ç
-	°´±ß·Ö
-				µÈ±ß
-				µÈÑü
-				²»µÈ±ß
+ä¸‰è§’å½¢åˆ†ç±»:
+	æŒ‰è§’åˆ†
+				ç›´è§’
+				é’è§’
+				é”è§’
+	æŒ‰è¾¹åˆ†
+				ç­‰è¾¹
+				ç­‰è…°
+				ä¸ç­‰è¾¹
 
-¹²7ÖÖÈı½ÇĞÎ:
+å…±7ç§ä¸‰è§’å½¢:
 
-				Ö±½Ç			¶Û½Ç			Èñ½Ç
-	µÈ±ß		X					X					1
-
-
-	µÈÑü		2					3					4
+				ç›´è§’			é’è§’			é”è§’
+	ç­‰è¾¹		X					X					1
 
 
-	²»µÈ±ß   5					6					7
+	ç­‰è…°		2					3					4
 
-	·ÇÈı½ÇĞÎ  0
+
+	ä¸ç­‰è¾¹   5					6					7
+
+	éä¸‰è§’å½¢  0
 
 */
 
@@ -47,27 +47,27 @@ public:
 	~Triangle() {};
 	void setPoint(esPoint2f _a, esPoint2f _b, esPoint2f _c);
 
-	bool IsTriangle();//ÊÇ·ñÎªÈı½ÇĞÎ
-	int  WhatTriangle();//Èı½ÇĞÎÀàĞÍ
+	bool IsTriangle();//æ˜¯å¦ä¸ºä¸‰è§’å½¢
+	int  WhatTriangle();//ä¸‰è§’å½¢ç±»å‹
 	void Calc();
 
-	float ZhouChang();//ÖÜ³¤
-	float MianJi();//Ãæ»ı
-	esCircle NeiXin();//ÄÚ½ÓÔ²
-	esPoint2f ChuiXin();//´¹ĞÄ
-	esPoint2f ZhongXing();//ÖØĞÄ
-	esCircle WaiXin();//Íâ½ÓÔ²
-	vector< esCircle> PangXin();//ÅÔ½ÓÔ²,·µ»ØABCÈıµã¶ÔÓ¦µÄÅÔ½ÓÔ²
-	vector<float> BianChang();//±ß³¤,·µ»ØABCÈıµã¶ÔÓ¦µÄ±ß³¤
+	float ZhouChang();//å‘¨é•¿
+	float MianJi();//é¢ç§¯
+	esCircle NeiXin();//å†…æ¥åœ†
+	esPoint2f ChuiXin();//å‚å¿ƒ
+	esPoint2f ZhongXing();//é‡å¿ƒ
+	esCircle WaiXin();//å¤–æ¥åœ†
+	vector< esCircle> PangXin();//æ—æ¥åœ†,è¿”å›ABCä¸‰ç‚¹å¯¹åº”çš„æ—æ¥åœ†
+	vector<float> BianChang();//è¾¹é•¿,è¿”å›ABCä¸‰ç‚¹å¯¹åº”çš„è¾¹é•¿
 
 private:
 
-	//ÖĞ¼äÊı¾İ
+	//ä¸­é—´æ•°æ®
 	//	L1 - CA
 	float A1 = 0;
 	float B1 = 0;
 	float C1 = 0;
-	//Ö±ÏßÏòÁ¿
+	//ç›´çº¿å‘é‡
 	float V_L1_X = 0;
 	float V_L1_Y = 0;
 
@@ -76,7 +76,7 @@ private:
 	float A2 = 0;
 	float B2 = 0;
 	float C2 = 0;
-	//Ö±ÏßÏòÁ¿
+	//ç›´çº¿å‘é‡
 	float V_L2_X = 0;
 	float V_L2_Y = 0;
 
@@ -84,7 +84,7 @@ private:
 	float A3 = 0;
 	float B3 = 0;
 	float C3 = 0;
-	//Ö±ÏßÏòÁ¿
+	//ç›´çº¿å‘é‡
 	float V_L3_X = 0;
 	float V_L3_Y = 0;
 
@@ -93,24 +93,24 @@ private:
 
 private:
 
-	//Èı¸ö¶¥µã
+	//ä¸‰ä¸ªé¡¶ç‚¹
 	esPoint2f A;
 	esPoint2f B;
 	esPoint2f C;
 
-	//Èı¸ö¶¥µã¶ÔÓ¦µÄ±ß³¤
+	//ä¸‰ä¸ªé¡¶ç‚¹å¯¹åº”çš„è¾¹é•¿
 	float a = 0;
 	float b = 0;
 	float c = 0;
 
-	//Èı½ÇĞÎÃæ»ı
+	//ä¸‰è§’å½¢é¢ç§¯
 	float S = 0;
 
-	//ÄÚĞÄ
+	//å†…å¿ƒ
 	esPoint2f PL;
 	float r = 0;
 
-	//ÅÔĞÄ
+	//æ—å¿ƒ
 	esPoint2f PW3_A;
 	esPoint2f PW3_B;
 	esPoint2f PW3_C;
@@ -118,13 +118,13 @@ private:
 	float rB = 0;
 	float rC = 0;
 
-	//ÖØĞÄ
+	//é‡å¿ƒ
 	esPoint2f PZ;
 
-	//´¹ĞÄ
+	//å‚å¿ƒ
 	esPoint2f PC;
 
-	//ÍâĞÄ
+	//å¤–å¿ƒ
 	esPoint2f PW;
 	float rW;
 

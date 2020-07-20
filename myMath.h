@@ -2,50 +2,50 @@
 #include "math.h"
 #include <cmath>
 
-//»ù±¾C++ÊıÑ§º¯Êı
+//åŸºæœ¬C++æ•°å­¦å‡½æ•°
 
 #define PI 3.1415926535897932384626433832795
 #define EPSILON  0.000001
 
 
-//ÏòÁ¿³¤¶È
+//å‘é‡é•¿åº¦
 float Norm_p(float x1, float y1);
-//ÏòÁ¿µã»ı//ÄÚ»ı
+//å‘é‡ç‚¹ç§¯//å†…ç§¯
 float Dot_p12(float x1, float y1, float x2, float y2);
-//Íâ»ı ²æ³Ë Æ½ĞĞËÄ±ßĞÎÃæ»ı
+//å¤–ç§¯ å‰ä¹˜ å¹³è¡Œå››è¾¹å½¢é¢ç§¯
 float Cross_p12(float x1, float y1, float x2, float y2);
-//¼ÆËãÏòÁ¿ÓëË®Æ½·½Ïò¼Ğ½Ç 0 - 360¶È
+//è®¡ç®—å‘é‡ä¸æ°´å¹³æ–¹å‘å¤¹è§’ 0 - 360åº¦
 float GetAngle_0_360_by_x(float x, float y);
-//¼ÆËãÏòÁ¿µÄ´¹Ö±µ¥Î»ÏòÁ¿
+//è®¡ç®—å‘é‡çš„å‚ç›´å•ä½å‘é‡
 void Verte(float x, float y, float &x_1, float &y_1, int type);
-//ÅĞ¶ÏµãÔÚÏòÁ¿×ó²àÓÒ²à:P1P2P3ÄæÊ±ÕëÊ±ÎªÕı£¬µ±P1P2P3Ë³Ê±ÕëÊ±Îª¸º¡£
+//åˆ¤æ–­ç‚¹åœ¨å‘é‡å·¦ä¾§å³ä¾§:P1P2P3é€†æ—¶é’ˆæ—¶ä¸ºæ­£ï¼Œå½“P1P2P3é¡ºæ—¶é’ˆæ—¶ä¸ºè´Ÿã€‚
 bool SideCheck(float x1, float y1, float x2, float y2, float x3, float y3);
 
 
-//¼ÆËãµãÓëµãÖ®¼ä¾àÀë
+//è®¡ç®—ç‚¹ä¸ç‚¹ä¹‹é—´è·ç¦»
 float TwoPointDistance(float x1, float y1, float x2, float y2);
-//µãµ½Ö±Ïß¾àÀë
+//ç‚¹åˆ°ç›´çº¿è·ç¦»
 float PointToLineDistance(float X0, float Y0, float A, float B, float C);
-//¼ÆËãµãµ½Ö±Ïß´¹Ïß  ´¹×ã x0,y0
+//è®¡ç®—ç‚¹åˆ°ç›´çº¿å‚çº¿  å‚è¶³ x0,y0
 void Point2Line(float x, float y, float p1_x, float p1_y, float p2_x, float p2_y, float &x0, float &y0, float &Distance);
-//Ö±Ïß·½³ÌÁ½µãÊ½×ªABCÊ½
+//ç›´çº¿æ–¹ç¨‹ä¸¤ç‚¹å¼è½¬ABCå¼
 void P12ToABC(float X1,float Y1, float X2,float Y2, float &A, float &B, float &C);
-//Á½Ö±Ïß½»µã
+//ä¸¤ç›´çº¿äº¤ç‚¹
 void LineCrossLine(float A1, float B1, float C1, float A2, float B2, float C2, float &xx, float &yy);
-//Á½Ö±ÏßÊÇ·ñÆ½ĞĞ¼Ğ½ÇĞ¡ÓÚEPSILON¼´ÎªÆ½ĞĞ
+//ä¸¤ç›´çº¿æ˜¯å¦å¹³è¡Œå¤¹è§’å°äºEPSILONå³ä¸ºå¹³è¡Œ
 bool IsTwoLineParallel(float A1, float B1, float C1, float A2, float B2, float C2);
-//ÈıµãÊÇ·ñ¹²Ïß
+//ä¸‰ç‚¹æ˜¯å¦å…±çº¿
 bool IsThreePointInLine(float X1, float Y1, float X2, float Y2, float X3, float Y3);
 
-//ÅĞ¶ÏÄ³Ò»µãÊÇ·ñÔÚ¶à±ßĞÎÄÚ²¿
+//åˆ¤æ–­æŸä¸€ç‚¹æ˜¯å¦åœ¨å¤šè¾¹å½¢å†…éƒ¨
 int Pnpoly(int nVert, float *pVertX, float *pVertY, float fX, float fY);
-//¸ù¾İÈı¸öµã¼ÆËãÔ²
+//æ ¹æ®ä¸‰ä¸ªç‚¹è®¡ç®—åœ†
 bool GetCircleFrom3Point(float X1, float Y1, float X2, float Y2, float X3, float Y3, float &CX, float &CY, float &radius);
 
 
-//¼ÆËãÒ»ÁĞÊı¾İÖÊĞÄ
+//è®¡ç®—ä¸€åˆ—æ•°æ®è´¨å¿ƒ
 float CentroidsofNumbers(float *Numbers, int Num, int Flag);
-//¼ÆËãÒ»ÁĞÊı¾İÌİ¶È
+//è®¡ç®—ä¸€åˆ—æ•°æ®æ¢¯åº¦
 void DiffofNumbers(const float *NumbersIn, float *NumbersOut, int Num);
 
 

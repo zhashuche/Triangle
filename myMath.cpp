@@ -46,7 +46,7 @@ float GetAngle_0_360_by_x(float x, float y)
 
 void Verte(float x, float y, float &x_1, float &y_1, int type)
 {
-	//int type = 0 ±íÊ¾·½ÏòÊÇÄæÊ±Õë
+	//int type = 0 è¡¨ç¤ºæ–¹å‘æ˜¯é€†æ—¶é’ˆ
 
 	//x_1 = x;
 	//y_1 = -y;
@@ -60,7 +60,7 @@ void Verte(float x, float y, float &x_1, float &y_1, int type)
 	}
 	if (x == 0)
 	{
-		if (0 == type)//´¹Ö±ÏòÁ¿µÄy·ÖÁ¿Ğ¡ÓÚÓÚ0£¬Ïò×óÉÏ
+		if (0 == type)//å‚ç›´å‘é‡çš„yåˆ†é‡å°äºäº0ï¼Œå‘å·¦ä¸Š
 		{
 			x_1 = -1 * y;
 			y_1 = 0;
@@ -79,7 +79,7 @@ void Verte(float x, float y, float &x_1, float &y_1, int type)
 	}
 	if (y == 0)
 	{
-		if (0 == type)//´¹Ö±ÏòÁ¿µÄy·ÖÁ¿Ğ¡ÓÚÓÚ0£¬Ïò×óÉÏ
+		if (0 == type)//å‚ç›´å‘é‡çš„yåˆ†é‡å°äºäº0ï¼Œå‘å·¦ä¸Š
 		{
 			x_1 = 0;
 			y_1 = x;
@@ -140,10 +140,10 @@ float PointToLineDistance(float X0, float Y0, float A, float B, float C)
 
 void Point2Line(float x, float y, float p1_x, float p1_y, float p2_x, float p2_y, float &x0, float &y0, float &Distance)
 {
-	//Ö±ÏßÏòÁ¿
+	//ç›´çº¿å‘é‡
 	float Lx = p2_x - p1_x;
 	float Ly = p2_y - p1_y;
-	//µ¥Î»ÏòÁ¿
+	//å•ä½å‘é‡
 	float eLx = Lx / Norm_p(Lx, Ly);
 	float eLy = Ly / Norm_p(Lx, Ly);
 
@@ -153,10 +153,10 @@ void Point2Line(float x, float y, float p1_x, float p1_y, float p2_x, float p2_y
 	//y0 = p1_y + eLy * t;
 	//float ex0x = x - x0;
 	//float ey0y = y - y0;
-	//´¹Ö±
+	//å‚ç›´
 	//Lx * ex0x + Ly * ey0y = 0;
 	//Lx * (x - (p1_x + eLx * t)) + Ly * (y - (p1_y + eLy * t)) = 0;
-	//½âµÃ t
+	//è§£å¾— t
 
 	t = (Lx * x - Lx * p1_x + Ly * y - Ly * p1_y) / (Lx * eLx + Ly * eLy);
 
@@ -179,7 +179,7 @@ void P12ToABC(float X1, float Y1, float X2, float Y2, float &A, float &B, float 
 
 void LineCrossLine(float A1, float B1, float C1, float A2, float B2, float C2, float &xx, float &yy)
 {
-	//Ö±Ïß½»µã
+	//ç›´çº¿äº¤ç‚¹
 	//X = (B1 * C2 - B2 * C1) / (A1 * B2 - A2 * B1)
 	//Y = (A2 * C1 - A1 * C2) / (A1 * B2 - A2 * B1)
 
@@ -250,17 +250,17 @@ bool IsThreePointInLine(float X1, float Y1, float X2, float Y2, float X3, float 
 int Pnpoly(int nVert, float *pVertX, float *pVertY, float fX, float fY)
 {
 	/************************
-	º¯Êı¹¦ÄÜ£ºÅĞ¶ÏÄ³Ò»µãÊÇ·ñÔÚ¶à±ßĞÎÄÚ²¿
-	nVert: ¶à±ßĞÎµÄ¶¥µãÊı
-	pVertX, pVertY: ¶¥µãX×ø±êºÍY×ø±ê·Ö±ğ×é³ÉµÄÊı×é
-	fX, fY: ĞèÒª²âÊÔµÄµãµÄX×ø±êºÍY×ø±ê
+	å‡½æ•°åŠŸèƒ½ï¼šåˆ¤æ–­æŸä¸€ç‚¹æ˜¯å¦åœ¨å¤šè¾¹å½¢å†…éƒ¨
+	nVert: å¤šè¾¹å½¢çš„é¡¶ç‚¹æ•°
+	pVertX, pVertY: é¡¶ç‚¹Xåæ ‡å’ŒYåæ ‡åˆ†åˆ«ç»„æˆçš„æ•°ç»„
+	fX, fY: éœ€è¦æµ‹è¯•çš„ç‚¹çš„Xåæ ‡å’ŒYåæ ‡
 
-	×¢Òâ¶¥µã×ø±êÎªÄæÊ±ÕëÊäÈë£¬ÀıÈç×óÉÏ¿í¸ßÒÀ´ÎÎª0 0 100 100µÄ¾ØĞÎ£¬Ôò
+	æ³¨æ„é¡¶ç‚¹åæ ‡ä¸ºé€†æ—¶é’ˆè¾“å…¥ï¼Œä¾‹å¦‚å·¦ä¸Šå®½é«˜ä¾æ¬¡ä¸º0 0 100 100çš„çŸ©å½¢ï¼Œåˆ™
 	int nVert = 4;
 	float pVertX[] = {0, 0, 100, 100};
 	float pVertY[] = {0,100, 100, 0};
 
-	·µ»ØÖµÎª0£¬Ôò²âÊÔµã²»ÔÚ¶à±ßĞÎÄÚ²¿£¬Îª1£¬Ôò²âÊÔµãÔÚ¶à±ßĞÎÄÚ²¿
+	è¿”å›å€¼ä¸º0ï¼Œåˆ™æµ‹è¯•ç‚¹ä¸åœ¨å¤šè¾¹å½¢å†…éƒ¨ï¼Œä¸º1ï¼Œåˆ™æµ‹è¯•ç‚¹åœ¨å¤šè¾¹å½¢å†…éƒ¨
 	******************************/
 	int i = 0;
 	int j = 0;
@@ -276,7 +276,7 @@ int Pnpoly(int nVert, float *pVertX, float *pVertY, float fX, float fY)
 bool GetCircleFrom3Point(float X1, float Y1, float X2, float Y2, float X3, float Y3, float &CX, float &CY, float &radius)
 {
 
-	//¼ÆËãP1-P2  P2-P3Á½ÌõÏß¶Î´¹Ö±Æ½·ÖÏß½»µã ¼´ÎªÔ²ĞÄ
+	//è®¡ç®—P1-P2  P2-P3ä¸¤æ¡çº¿æ®µå‚ç›´å¹³åˆ†çº¿äº¤ç‚¹ å³ä¸ºåœ†å¿ƒ
 
 	float A1 = 0;
 	float B1 = 0;
@@ -286,10 +286,10 @@ bool GetCircleFrom3Point(float X1, float Y1, float X2, float Y2, float X3, float
 	float B2 = 0;
 	float C2 = 0;
 
-	//Á½µãÊ½×ªABC
+	//ä¸¤ç‚¹å¼è½¬ABC
 	P12ToABC(X1, Y1, X2, Y2, A1, B1, C1);
 	P12ToABC(X2, Y2, X3, Y3, A2, B2, C2);
-	//Á½Ö±ÏßÆ½ĞĞÔò·µ»ØNG
+	//ä¸¤ç›´çº¿å¹³è¡Œåˆ™è¿”å›NG
 	bool ans1 = IsTwoLineParallel(A1, B1, C1, A2, B2, C2);
 	if (ans1)
 	{
@@ -299,38 +299,38 @@ bool GetCircleFrom3Point(float X1, float Y1, float X2, float Y2, float X3, float
 		return 0;
 	}
 
-	//P1-2ÏòÁ¿
+	//P1-2å‘é‡
 	float ep12_x = X2 - X1;
 	float ep12_y = Y2 - Y1;
-	//P12ÖĞµã
+	//P12ä¸­ç‚¹
 	float p12_x = (X2 + X1) / 2;
 	float p12_y = (Y2 + Y1) / 2;
-	//P1-2´¹Ö±µ¥Î»ÏòÁ¿
+	//P1-2å‚ç›´å•ä½å‘é‡
 	float vp12_x = 0;
 	float vp12_y = 0;
 	Verte(ep12_x, ep12_y, vp12_x, vp12_y, 0);
 
-	//P1-2 ´¹Ö±ÏòÁ¿Ö±Ïß
+	//P1-2 å‚ç›´å‘é‡ç›´çº¿
 	P12ToABC(p12_x, p12_y, p12_x + vp12_x, p12_y + vp12_y, A1, B1, C1);
 
 
 
-	//P2-3ÏòÁ¿
+	//P2-3å‘é‡
 	float ep23_x = X3 - X2;
 	float ep23_y = Y3 - Y2;
-	//P2-3ÖĞµã
+	//P2-3ä¸­ç‚¹
 	float p23_x = (X3 + X2) / 2;
 	float p23_y = (Y3 + Y2) / 2;
-	//P2-3´¹Ö±µ¥Î»ÏòÁ¿
+	//P2-3å‚ç›´å•ä½å‘é‡
 	float vp23_x = 0;
 	float vp23_y = 0;
 	Verte(ep23_x, ep23_y, vp23_x, vp23_y, 0);
 
-	//P2-3 ´¹Ö±ÏòÁ¿Ö±Ïß
+	//P2-3 å‚ç›´å‘é‡ç›´çº¿
 	P12ToABC(p23_x, p23_y, p23_x + vp23_x, p23_y + vp23_y, A2, B2, C2);
 
 
-	//Á½Ö±Ïß½»µã¼´ÎªÔ²ĞÄ
+	//ä¸¤ç›´çº¿äº¤ç‚¹å³ä¸ºåœ†å¿ƒ
 	float xx = 0;
 	float yy = 0;
 	LineCrossLine(A1, B1, C1, A2, B2, C2, xx, yy);
